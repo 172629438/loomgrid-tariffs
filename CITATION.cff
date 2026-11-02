@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this dataset in research or commercial work, please cite it as below."
+type: dataset
+title: "China Provincial TOU Tariff Dataset"
+abstract: >-
+  Time-of-use electricity tariffs for 32 provincial-level regions in China,
+  including peak/flat/valley price levels, seasonal period tables, demand
+  charges, recommended battery charging-cycle modes, demand-response subsidy
+  standards, and the policy document citation for each region.
+version: "2026.06"
+date-released: "2026-06-30"
+license: MIT
+url: "https://github.com/172629438/loomgrid-tariffs"
+repository-code: "https://github.com/172629438/loomgrid-tariffs"
+keywords:
+  - time-of-use tariff
+  - electricity price
+  - China
+  - peak-valley spread
+  - energy storage
+  - BESS
+  - demand charge
+  - 分时电价
+  - 峰谷电价
+  - 储能
+authors:
+  - name: "LoomGrid"
+    website: "https://github.com/172629438/loomgrid"
+    alias: "172629438"
+preferred-citation:
+  type: dataset
+  title: "China Provincial TOU Tariff Dataset (price version 2026-06)"
+  year: 2026
+  authors:
+    - name: "LoomGrid"
+      website: "https://github.com/172629438/loomgrid"
+  url: "https://github.com/172629438/loomgrid-tariffs"
