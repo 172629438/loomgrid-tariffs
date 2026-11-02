@@ -4,7 +4,8 @@
 **32 provincial-level regions · peak/flat/valley prices · seasonal period tables · demand-response subsidies**
 
 [![Regions](https://img.shields.io/badge/regions-32-2f6b4f?style=flat-square)](#覆盖范围)
-[![Periods](https://img.shields.io/badge/period_records-311-2f6b4f?style=flat-square)](#文件结构)
+[![Periods](https://img.shields.io/badge/period_records-309-2f6b4f?style=flat-square)](#文件结构)
+[![validate](https://github.com/172629438/loomgrid-tariffs/actions/workflows/validate.yml/badge.svg)](https://github.com/172629438/loomgrid-tariffs/actions/workflows/validate.yml)
 [![Price version](https://img.shields.io/badge/price_version-2026--06-9a7b2e?style=flat-square)](#数据版本与时效)
 [![License](https://img.shields.io/badge/license-MIT-2f6b4f?style=flat-square)](LICENSE)
 
@@ -22,7 +23,7 @@ China's industrial & commercial (C&I) electricity tariffs are **time-of-use base
 This dataset collects the result of that work for **32 provincial-level regions**, as of **price version 2026-06**:
 
 - `data/province_tariff_summary.csv` — one row per region: peak/flat/valley price, demand charge, charging-cycle mode, policy citation
-- `data/province_tariff_periods.csv` — long format: region × season × time segment (311 records)
+- `data/province_tariff_periods.csv` — long format: region × season × time segment (309 records)
 - `data/province_tariff.json` — full nested structure, drop-in for application code
 - `data/dr_subsidy.csv` — demand-response subsidy standards (5 regions with published rates)
 
@@ -86,7 +87,7 @@ for _, r in zj.iterrows():
 ```
 data/
 ├── province_tariff_summary.csv    32 行 · 一省一行 · 价格/需量/模式/出处
-├── province_tariff_periods.csv   311 行 · 省份×季节×时段 长表
+├── province_tariff_periods.csv   309 行 · 省份×季节×时段 长表
 ├── province_tariff.json           完整嵌套结构（含原始 periods 字段）
 ├── dr_subsidy.csv                  5 行 · 需求响应补贴
 └── meta.json                      版本 / 省份清单 / 生成元信息

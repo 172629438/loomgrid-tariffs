@@ -1,0 +1,126 @@
+name: data correction
+description: 某个省的电价或时段不对
+title: "[data] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **这个模板强制要求出处。** 没有政策文号的修正请求不会处理——
+
+        不是不信你，是这份数据要被拿去算钱。改一个数字而不留依据，
+        下一个人就不知道该信谁。每条数据在 `source_note` 字段里都记着
+        它来自哪份文件，改的时候必须同步更新。
+
+  - type: dropdown
+    id: province
+    attributes:
+      label: 哪个省级行政区
+      options:
+        - 北京
+        - 天津
+        - 河北
+        - 山西
+        - 蒙东
+        - 蒙西
+        - 辽宁
+        - 吉林
+        - 黑龙江
+        - 上海
+        - 江苏
+        - 浙江
+        - 安徽
+        - 福建
+        - 江西
+        - 山东
+        - 河南
+        - 湖北
+        - 湖南
+        - 广东
+        - 广西
+        - 海南
+        - 重庆
+        - 四川
+        - 贵州
+        - 云南
+        - 西藏
+        - 陕西
+        - 甘肃
+        - 青海
+        - 宁夏
+        - 新疆
+    validations:
+      required: true
+
+  - type: dropdown
+    id: what
+    attributes:
+      label: 错在哪
+      options:
+        - 价格（peak / flat / valley 数值）
+        - 时段划分（哪个小时属于哪一段）
+        - 季节分组（哪几个月用同一套时段）
+        - 需量电费
+        - 需求响应补贴
+        - 充放电模式建议
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 现在 dataset 里是什么
+      description: 从 data/province_tariff_summary.csv 或 periods.csv 里抄过来。
+      placeholder: |
+        summary.csv:
+        浙江,1.16,0.67,0.28,30,一充一放,2026-07-01,...
+
+        periods.csv:
+        浙江,1月/7月/8月/12月,1,7,8,12,16,18,2,peak
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: 应该是什么
+      placeholder: |
+        晚高峰应为 16:00–23:00，不是 16:00–18:00。
+        价格不变。
+    validations:
+      required: true
+
+  - type: input
+    id: document
+    attributes:
+      label: 政策文号
+      description: 完整文号，例如「浙发改价格〔2026〕112号」。多份文件用逗号分隔。
+      placeholder: 浙发改价格〔2026〕112号
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 文件链接
+      description: 发改委/能源局官网的原文链接。找不到链接的话，贴可检索的标题也行。
+    validations:
+      required: false
+
+  - type: input
+    id: effective
+    attributes:
+      label: 生效日期
+      description: 格式 YYYY-MM-DD。如果政策分阶段执行，写当前阶段。
+      placeholder: "2026-07-01"
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: 影响面
+      description: 按新数据算，典型的储能项目收益会差多少？不知道可以留空。
+    validations:
+      required: false
