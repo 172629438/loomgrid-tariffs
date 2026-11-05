@@ -139,10 +139,10 @@
    "market_regime": "pending",
    "market_source": "取消固定分时电价方案处于征求意见阶段（NEA/第一财经 2026-02-06）",
    "mode": "两充两放",
-   "note": "2025.6新政;夏冬午谷2h/春秋午谷4h(10-14)",
-   "effective_from": null,
+   "note": "苏发改价格发〔2025〕426号《关于优化工商业分时电价结构促进新能源消纳降低企业用电成本支持经济社会发展的通知》，2025-06-01 起执行",
+   "effective_from": "2025-06-01",
    "effective_to": null,
-   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "source_url": "https://fgw.nanjing.gov.cn/njsfzhggwyh/202505/t20250506_5140665.html",
    "verify_status": "policy",
    "periods": [
     [
@@ -250,11 +250,11 @@
    "market_regime": "unknown",
    "market_source": "",
    "mode": "两充两放",
-   "note": "皖2025.7新政3季模式;春秋午谷11-14/夏谷2-9+11-13/冬谷12-14;尖峰7-8月20-22",
-   "effective_from": null,
+   "note": "皖发改价格〔2025〕302号《关于进一步完善工商业峰谷分时电价政策有关事项的通知》，2025-07-01 起执行，废止皖发改价格函〔2024〕86号",
+   "effective_from": "2025-07-01",
    "effective_to": null,
-   "source_url": null,
-   "verify_status": "none",
+   "source_url": "https://www.ahjx.gov.cn/OpennessContent/show/3549242.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
@@ -1253,10 +1253,10 @@
    "market_regime": "unknown",
    "market_source": "冀北未见取消固定分时电价的官方表述，待核实",
    "mode": "两充两放",
-   "note": "冀北2026新政4季模式;冬有深谷12-15;上下浮动70%",
-   "effective_from": null,
+   "note": "冀发改能价〔2025〕1275号《关于优化调整冀北电网工商业及其他用户分时电价政策的通知》，2026-01-01 起执行",
+   "effective_from": "2026-01-01",
    "effective_to": null,
-   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "source_url": "https://www.tsgxq.gov.cn/uploads/files/df5d61e1e37c15dfe0add46933f23775.pdf",
    "verify_status": "policy",
    "periods": [
     [
@@ -1481,7 +1481,7 @@
    "market_regime": "market",
    "market_source": "河北南网已明确取消固定分时电价（NEA/第一财经 2026-02-06）",
    "mode": "",
-   "note": "河北南网2025年11月起执行新分时时段;平段为当月代理购电平均价,高峰/低谷在平段基础上上下浮动70%,尖峰在高峰基础上上浮20%,深谷在低谷基础上下浮;春秋新增午间深谷(拟稿口径,待官方文件复核)",
+   "note": "河北南网2025年11月起执行新分时时段;平段为当月代理购电平均价,高峰/低谷在平段基础上上下浮动70%,尖峰在高峰基础上上浮20%,深谷在低谷基础上下浮;春秋新增午间深谷(文号未获取,待补)",
    "effective_from": "2025-11-01",
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
@@ -1702,10 +1702,10 @@
    "market_regime": "market",
    "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
    "mode": "两充两放",
-   "note": "豫发改价管〔2024〕283号;夏冬谷0-7/春秋午谷11-14;尖峰1/12月17-19,7-8月20-23.参与电力市场用户可能不受固定时段约束",
-   "effective_from": null,
+   "note": "豫发改价管〔2024〕283号《关于调整工商业分时电价有关事项的通知》，2024-06-01 起实施，废止豫发改价管〔2022〕867号",
+   "effective_from": "2024-06-01",
    "effective_to": null,
-   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "source_url": "https://fgw.henan.gov.cn/2024/05-29/3000232.html",
    "verify_status": "policy",
    "periods": [
     [
@@ -1850,26 +1850,103 @@
    "market_regime": "unknown",
    "market_source": "",
    "mode": "两充两放",
-   "note": "7-9月尖峰20-24;全国最大峰谷价差~1.06元",
-   "effective_from": null,
+   "note": "湖南省发改委《关于优化我省分时电价政策有关问题的通知》，2025-08-01 起执行，有效期 5 年（文号未获取，待补）",
+   "effective_from": "2025-08-01",
    "effective_to": null,
-   "source_url": null,
-   "verify_status": "none",
+   "source_url": "https://www.hunan.gov.cn/zqt/zcsd/202507/t20250704_33729798.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
       1,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       14,
+       "peak"
+      ],
+      [
+       14,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       18,
+       "peak"
+      ],
+      [
+       18,
+       22,
+       "sharp_peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
       2,
       3,
       4,
       5,
       6,
-      7,
-      8,
       9,
       10,
-      11,
-      12
+      11
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       14,
+       "peak"
+      ],
+      [
+       14,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
+      7,
+      8
      ],
      [
       [
@@ -2070,11 +2147,11 @@
    "market_regime": "unknown",
    "market_source": "",
    "mode": "两充两放",
-   "note": "川发改价格〔2025〕185号3季模式;春秋谷10h/夏季峰10h谷6h;7-8月尖峰13-14+21-23",
-   "effective_from": null,
+   "note": "川发改价格〔2025〕185号《关于进一步调整我省分时电价机制的通知》，2025-05-01 起执行",
+   "effective_from": "2025-05-01",
    "effective_to": null,
-   "source_url": null,
-   "verify_status": "none",
+   "source_url": "https://cn.solarbe.com/news/20250506/50002141.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
