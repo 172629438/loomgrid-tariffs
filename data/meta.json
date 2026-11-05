@@ -1,9 +1,10 @@
 {
  "dataset": "china-ci-tou-tariff",
+ "schema_version": "2.0",
  "price_version": "2026-06",
- "last_updated": "2026-06-17",
+ "last_updated": "2026-11-05",
  "check_months": 6,
- "province_count": 32,
+ "province_count": 33,
  "provinces": [
   "浙江",
   "江苏",
@@ -16,7 +17,8 @@
   "山东",
   "北京",
   "天津",
-  "河北",
+  "冀北",
+  "河北南网",
   "山西",
   "蒙东",
   "蒙西",
@@ -38,8 +40,28 @@
   "吉林",
   "黑龙江"
  ],
- "summary_rows": 32,
- "period_rows": 309,
+ "summary_rows": 33,
+ "period_rows": 336,
  "dr_rows": 5,
+ "regime_counts": {
+  "unknown": 22,
+  "pending": 2,
+  "market": 9
+ },
+ "verify_counts": {
+  "none": 21,
+  "policy": 12
+ },
+ "needs_review": [
+  "31 省 effective_from 为空：需逐省取发改委/电网公告补生效日期与文号",
+  "广东四价区（珠三角六市/惠州/东西两翼/粤北）未拆行，分区价格未入库",
+  "河北南网价格留空：仅登记政策机制（浮动70%、尖峰上浮20%），价格待取",
+  "尖峰时段仅安徽/河南/四川三地完成结构化；上海、北京、天津、海南、福建、青海的尖峰无明确月份或时段，未入库",
+  "湖南 source_note 称 7-9 月尖峰 20-24，但时段表 22-24 标为 flat，二者矛盾待核",
+  "山东深谷 11-14 未标月份，未入库",
+  "全库 voltage_level 为空：未按 1-10kV / 35kV / 110kV 分档",
+  "价格数值均为 2026-06 版本，未做 2026-07 至 2026-11 的月度代理购电跟踪",
+  "21 省 market_regime 为 unknown：未核实其市场化用户是否仍执行政府核定分时电价"
+ ],
  "issues": []
 }

@@ -20,3 +20,7 @@ desktop.ini
 *.tmp
 *.bak
 ~$*
+
+# 巡检临时产物
+scripts/_demo_snapshot.csv
+reports/

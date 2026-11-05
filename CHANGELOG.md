@@ -6,6 +6,33 @@
 
 ---
 
+## [2026.06-rev2 · schema 2.0] — 2026-11-05
+
+### Added
+- **`market_regime` / `proxy_regime` / `market_source`**：区分「电网代理购电用户」与「市场化交易用户」两套定价机制。依据发改能源规〔2025〕1656号，自 2026-03-01 起入市用户不再人为规定分时电价。已取消固定分时电价的 9 地（贵州、河北南网、湖北、陕西、吉林、云南、重庆、辽宁、河南）标为 `market`，江苏/山西为 `pending`，其余 21 省 `unknown`（未核实）。
+- **`price_zone` / `grid_company`**：价区与电网归属。河北按电网拆为 `冀北` 与 `河北南网` 两行；广东标注为四价区省份（珠三角六市/惠州/东西两翼/粤北）。
+- **`price_sharp_peak_cny_per_kwh` / `price_deep_valley_cny_per_kwh`**：尖峰/深谷价格列（结构就位，数值待取）。
+- **`period_type` 新增 `sharp_peak` / `deep_valley`**：尖峰不再沉在 `peak` 里。安徽（7-8月 20-22）、河南（1/12月 17-19、7-8月 20-23）、四川（7-8月 13-14、21-23）已完成结构化，共 5 条尖峰记录。
+- **`source_url` / `verify_status` / `effective_to` / `voltage_level`**：来源链接、核实状态、失效日期、电压等级。
+- **`scripts/check_proxy_price.py`**：月度代理购电巡检，快照 vs 库内 → 差异报告（含 `--demo` 自测）。
+- **`scripts/price_snapshot_template.csv`**：巡检快照填写模板。
+- **`meta.json` 新增 `needs_review`**：把未完成项写进数据文件，不再只靠口头交代。
+
+### Changed
+- 时段表行数 309 → 336（尖峰拆分所致）；省份 32 → 33（河北拆分）。
+- `validate.py` 适配 v2：允许价格占位行与无时段省份，但要求显式声明 `verify_status`；新增 `market_regime` / `verify_status` 词表校验；“`market` 却无 `source_url`”记警告。
+- README 字段表、数据边界、月度巡检章节同步重写。
+
+### Known gaps（详见 `meta.json` 的 `needs_review`）
+- 31 省 `effective_from` 仍为空。
+- 广东四价区未拆行，分区价格未入库。
+- 河北南网价格与时段为空值行。
+- 上海、北京、天津、海南、福建、青海尖峰无明确月份/时段，未入库。
+- 湖南 `source_note` 称 7-9 月尖峰 20-24，与时段表 22-24 为 flat 相矛盾，待核。
+- 全库 `voltage_level` 为空；价格数值仍为 2026-06 版本，未做 7-11 月跟踪。
+
+---
+
 ## [2026.06-rev1] — 2026-11-02
 
 ### Fixed

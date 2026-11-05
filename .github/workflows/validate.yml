@@ -16,6 +16,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      # validate.py 只用标准库，不需要装任何依赖。
+      # validate.py 与 scripts/ 只用标准库，无需安装依赖
       - name: Validate dataset
         run: python validate.py
+
+      - name: Compile-check scripts
+        run: |
+          python -m py_compile scripts/check_proxy_price.py
+          echo "scripts 语法检查通过"

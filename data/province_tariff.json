@@ -1,62 +1,34 @@
 {
  "meta": {
-  "version": "2026-06",
-  "last_updated": "2026-06-17",
+  "dataset": "china-ci-tou-tariff",
+  "schema_version": "2.0",
+  "price_version": "2026-06",
+  "last_updated": "2026-11-05",
   "check_months": 6,
-  "province_count": 32,
-  "dataset": "china-ci-tou-tariff"
+  "province_count": 33,
+  "note": "schema 2.0 拆出适用主体/价区/尖峰深谷/来源与核实标记；价格数据版本仍为 2026-06，未重新取价"
  },
  "provinces": {
   "浙江": {
    "peak": 1.16,
-   "valley": 0.28,
    "flat": 0.67,
-   "demand": 30,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 30.0,
+   "price_zone": "全省",
+   "grid_company": "国网浙江",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "浙发改价格〔2026〕112号(2026.7.1生效);取消上午高峰,午谷3h(11-14),晚高峰16-23",
+   "effective_from": "2026-07-01",
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
-    [
-     [
-      2,
-      3,
-      4,
-      5,
-      6,
-      9,
-      10,
-      11
-     ],
-     [
-      [
-       0,
-       8,
-       "valley"
-      ],
-      [
-       8,
-       11,
-       "flat"
-      ],
-      [
-       11,
-       14,
-       "valley"
-      ],
-      [
-       14,
-       16,
-       "flat"
-      ],
-      [
-       16,
-       23,
-       "peak"
-      ],
-      [
-       23,
-       24,
-       "flat"
-      ]
-     ]
-    ],
     [
      [
       1,
@@ -106,26 +78,81 @@
        "flat"
       ]
      ]
+    ],
+    [
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       14,
+       "valley"
+      ],
+      [
+       14,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       23,
+       "peak"
+      ],
+      [
+       23,
+       24,
+       "flat"
+      ]
+     ]
     ]
-   ],
-   "mode": "一充一放",
-   "note": "浙发改价格〔2026〕112号(2026.7.1生效);取消上午高峰,午谷3h(11-14),晚高峰16-23",
-   "effective_from": "2026-07-01"
+   ]
   },
   "江苏": {
    "peak": 1.16,
-   "valley": 0.28,
    "flat": 0.67,
-   "demand": 30,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 30.0,
+   "price_zone": "全省",
+   "grid_company": "国网江苏",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "pending",
+   "market_source": "取消固定分时电价方案处于征求意见阶段（NEA/第一财经 2026-02-06）",
+   "mode": "两充两放",
+   "note": "2025.6新政;夏冬午谷2h/春秋午谷4h(10-14)",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
+      1,
+      2,
       6,
       7,
       8,
-      12,
-      1,
-      2
+      12
      ],
      [
       [
@@ -207,103 +234,28 @@
       ]
      ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "2025.6新政;夏冬午谷2h/春秋午谷4h(10-14)"
+   ]
   },
   "安徽": {
    "peak": 1.03,
-   "valley": 0.32,
    "flat": 0.63,
-   "demand": 28,
+   "valley": 0.32,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "全省",
+   "grid_company": "国网安徽",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "皖2025.7新政3季模式;春秋午谷11-14/夏谷2-9+11-13/冬谷12-14;尖峰7-8月20-22",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
-    [
-     [
-      2,
-      3,
-      4,
-      5,
-      6,
-      10,
-      11
-     ],
-     [
-      [
-       23,
-       6,
-       "valley"
-      ],
-      [
-       6,
-       8,
-       "peak"
-      ],
-      [
-       8,
-       11,
-       "flat"
-      ],
-      [
-       11,
-       14,
-       "valley"
-      ],
-      [
-       14,
-       16,
-       "flat"
-      ],
-      [
-       16,
-       22,
-       "peak"
-      ],
-      [
-       22,
-       23,
-       "flat"
-      ]
-     ]
-    ],
-    [
-     [
-      7,
-      8,
-      9
-     ],
-     [
-      [
-       0,
-       2,
-       "flat"
-      ],
-      [
-       2,
-       9,
-       "valley"
-      ],
-      [
-       9,
-       11,
-       "flat"
-      ],
-      [
-       11,
-       13,
-       "valley"
-      ],
-      [
-       13,
-       16,
-       "flat"
-      ],
-      [
-       16,
-       24,
-       "peak"
-      ]
-     ]
-    ],
     [
      [
       1,
@@ -311,11 +263,6 @@
      ],
      [
       [
-       23,
-       6,
-       "valley"
-      ],
-      [
        6,
        12,
        "flat"
@@ -334,25 +281,175 @@
        15,
        23,
        "peak"
+      ],
+      [
+       23,
+       6,
+       "valley"
       ]
      ]
-    ]
-   ],
-   "mode": "两充两放",
-   "note": "皖2025.7新政3季模式;春秋午谷11-14/夏谷2-9+11-13/冬谷12-14;尖峰7-8月20-22"
-  },
-  "上海": {
-   "peak": 1.19,
-   "valley": 0.3,
-   "flat": 0.68,
-   "demand": 33,
-   "periods": [
+    ],
+    [
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11
+     ],
+     [
+      [
+       6,
+       8,
+       "peak"
+      ],
+      [
+       8,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       14,
+       "valley"
+      ],
+      [
+       14,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       23,
+       "flat"
+      ],
+      [
+       23,
+       6,
+       "valley"
+      ]
+     ]
+    ],
     [
      [
       7,
+      8
+     ],
+     [
+      [
+       0,
+       2,
+       "flat"
+      ],
+      [
+       2,
+       9,
+       "valley"
+      ],
+      [
+       9,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       13,
+       "valley"
+      ],
+      [
+       13,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       20,
+       "peak"
+      ],
+      [
+       20,
+       22,
+       "sharp_peak"
+      ],
+      [
+       22,
+       24,
+       "peak"
+      ]
+     ]
+    ],
+    [
+     [
+      9
+     ],
+     [
+      [
+       0,
+       2,
+       "flat"
+      ],
+      [
+       2,
+       9,
+       "valley"
+      ],
+      [
+       9,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       13,
+       "valley"
+      ],
+      [
+       13,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       24,
+       "peak"
+      ]
+     ]
+    ]
+   ]
+  },
+  "上海": {
+   "peak": 1.19,
+   "flat": 0.68,
+   "valley": 0.3,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 33.0,
+   "price_zone": "全省",
+   "grid_company": "国网上海",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "夏冬尖峰18-21;节假日深谷0-6及22-24",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      7,
       8,
-      12,
-      1
+      12
      ],
      [
       [
@@ -456,80 +553,51 @@
       ]
      ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "夏冬尖峰18-21;节假日深谷0-6及22-24"
+   ]
   },
   "福建": {
    "peak": 0.95,
-   "valley": 0.3,
    "flat": 0.58,
-   "demand": 25,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
+   "valley": 0.3,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 25.0,
+   "price_zone": "全省",
+   "grid_company": "国网福建",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
    "mode": "两充两放",
-   "note": "午前尖峰11-12;无深谷"
-  },
-  "广东": {
-   "peak": 1.21,
-   "valley": 0.28,
-   "flat": 0.68,
-   "demand": 32,
+   "note": "午前尖峰11-12;无深谷",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
      [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
       7,
       8,
-      9
+      9,
+      10,
+      11,
+      12
      ],
      [
       [
        0,
-       9,
+       8,
        "valley"
       ],
       [
-       9,
+       8,
        10,
        "flat"
       ],
@@ -561,10 +629,32 @@
       [
        22,
        24,
-       "flat"
+       "valley"
       ]
      ]
-    ],
+    ]
+   ]
+  },
+  "广东": {
+   "peak": 1.21,
+   "flat": 0.68,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 32.0,
+   "price_zone": "珠三角六市/惠州/东西两翼/粤北(四价区)",
+   "grid_company": "南网广东",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "夏谷0-9(9h)/非夏午间谷12-14;珠三角尖峰1.38;广东为多价区省份,2026年内由珠三角五市+江门口径调整为珠三角六市,本行价格为全省参考值,分区价格见月度巡检输出",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
     [
      [
       1,
@@ -619,116 +709,237 @@
        "flat"
       ]
      ]
+    ],
+    [
+     [
+      7,
+      8,
+      9
+     ],
+     [
+      [
+       0,
+       9,
+       "valley"
+      ],
+      [
+       9,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "夏谷0-9(9h)/非夏午间谷12-14;珠三角尖峰1.38"
+   ]
   },
   "广西": {
    "peak": 0.92,
-   "valley": 0.28,
    "flat": 0.55,
-   "demand": 26,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "南网广西",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "无尖峰;峰谷价差较小",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "无尖峰;峰谷价差较小"
+   ]
   },
   "海南": {
    "peak": 0.88,
-   "valley": 0.32,
    "flat": 0.58,
-   "demand": 24,
+   "valley": 0.32,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 24.0,
+   "price_zone": "全省",
+   "grid_company": "南网海南",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "峰谷价差全国较小;高温月份尖峰",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "峰谷价差全国较小;高温月份尖峰"
+   ]
   },
   "山东": {
    "peak": 1.05,
-   "valley": 0.3,
    "flat": 0.62,
-   "demand": 28,
+   "valley": 0.3,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "全省",
+   "grid_company": "国网山东",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "2026公告全5季模式;深谷11-14下浮90%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
      [
@@ -779,6 +990,43 @@
       ],
       [
        21,
+       24,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+     ],
+     [
+      [
+       0,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       15,
+       "valley"
+      ],
+      [
+       15,
+       17,
+       "flat"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
        24,
        "flat"
       ]
@@ -848,188 +1096,169 @@
        "flat"
       ]
      ]
-    ],
-    [
-     [
-      3,
-      4,
-      5,
-      9,
-      10,
-      11
-     ],
-     [
-      [
-       0,
-       10,
-       "flat"
-      ],
-      [
-       10,
-       15,
-       "valley"
-      ],
-      [
-       15,
-       17,
-       "flat"
-      ],
-      [
-       17,
-       22,
-       "peak"
-      ],
-      [
-       22,
-       24,
-       "flat"
-      ]
-     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "2026公告全5季模式;深谷11-14下浮90%"
+   ]
   },
   "北京": {
    "peak": 1.1,
-   "valley": 0.3,
    "flat": 0.65,
-   "demand": 30,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     15,
-     "peak"
-    ],
-    [
-     15,
-     17,
-     "flat"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
-   "mode": "两充两放",
-   "note": "夏冬尖峰;低谷下浮70%"
-  },
-  "天津": {
-   "peak": 1.05,
    "valley": 0.3,
-   "flat": 0.63,
-   "demand": 28,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     19,
-     "peak"
-    ],
-    [
-     19,
-     24,
-     "flat"
-    ]
-   ],
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 30.0,
+   "price_zone": "全省",
+   "grid_company": "国网北京",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
    "mode": "两充两放",
-   "note": "夏冬尖峰上浮20%"
-  },
-  "河北": {
-   "peak": 1.02,
-   "valley": 0.28,
-   "flat": 0.6,
-   "demand": 28,
+   "note": "夏冬尖峰;低谷下浮70%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
      [
+      1,
+      2,
+      3,
+      4,
+      5,
       6,
       7,
-      8
+      8,
+      9,
+      10,
+      11,
+      12
      ],
      [
       [
        0,
-       7,
+       8,
        "valley"
       ],
       [
-       7,
+       8,
        10,
        "flat"
       ],
       [
        10,
-       12,
+       15,
        "peak"
       ],
       [
-       12,
-       16,
+       15,
+       17,
        "flat"
       ],
       [
-       16,
-       18,
-       "peak"
-      ],
-      [
-       18,
-       21,
-       "peak"
-      ],
-      [
-       21,
+       17,
        22,
        "peak"
       ],
       [
        22,
-       23,
-       "flat"
-      ],
-      [
-       23,
        24,
        "valley"
       ]
      ]
-    ],
+    ]
+   ]
+  },
+  "天津": {
+   "peak": 1.05,
+   "flat": 0.63,
+   "valley": 0.3,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "全省",
+   "grid_company": "国网天津",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "夏冬尖峰上浮20%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       19,
+       "peak"
+      ],
+      [
+       19,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "冀北": {
+   "peak": 1.02,
+   "flat": 0.6,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "冀北",
+   "grid_company": "国网冀北",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "冀北未见取消固定分时电价的官方表述，待核实",
+   "mode": "两充两放",
+   "note": "冀北2026新政4季模式;冬有深谷12-15;上下浮动70%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
     [
      [
       1,
@@ -1181,135 +1410,341 @@
        "flat"
       ]
      ]
+    ],
+    [
+     [
+      6,
+      7,
+      8
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       18,
+       "peak"
+      ],
+      [
+       18,
+       21,
+       "peak"
+      ],
+      [
+       21,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       23,
+       "flat"
+      ],
+      [
+       23,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "冀北2026新政4季模式;冬有深谷12-15;上下浮动70%"
+   ]
+  },
+  "河北南网": {
+   "peak": null,
+   "flat": null,
+   "valley": null,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": null,
+   "price_zone": "河北南网",
+   "grid_company": "国网河北",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "河北南网已明确取消固定分时电价（NEA/第一财经 2026-02-06）",
+   "mode": "",
+   "note": "河北南网2025年11月起执行新分时时段;平段为当月代理购电平均价,高峰/低谷在平段基础上上下浮动70%,尖峰在高峰基础上上浮20%,深谷在低谷基础上下浮;春秋新增午间深谷(拟稿口径,待官方文件复核)",
+   "effective_from": "2025-11-01",
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": []
   },
   "山西": {
    "peak": 0.98,
-   "valley": 0.27,
    "flat": 0.58,
-   "demand": 26,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     15,
-     "valley"
-    ],
-    [
-     15,
-     16,
-     "flat"
-    ],
-    [
-     16,
-     23,
-     "peak"
-    ],
-    [
-     23,
-     24,
-     "flat"
-    ]
-   ],
+   "valley": 0.27,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "国网山西",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "pending",
+   "market_source": "取消固定分时电价方案处于征求意见阶段（NEA/第一财经 2026-02-06）",
    "mode": "一充一放",
-   "note": "日间谷段9-15(8h)适配光伏消纳"
-  },
-  "蒙东": {
-   "peak": 0.9,
-   "valley": 0.25,
-   "flat": 0.52,
-   "demand": 24,
-   "periods": [
-    [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "一充一放",
-   "note": "日间谷段9-17适配新能源"
-  },
-  "蒙西": {
-   "peak": 0.85,
-   "valley": 0.24,
-   "flat": 0.5,
-   "demand": 22,
-   "periods": [
-    [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "一充一放",
-   "note": "日间谷段9-17适配新能源"
-  },
-  "河南": {
-   "peak": 1.01,
-   "valley": 0.3,
-   "flat": 0.61,
-   "demand": 28,
+   "note": "日间谷段9-15(8h)适配光伏消纳",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
       1,
       2,
+      3,
+      4,
+      5,
       6,
       7,
       8,
+      9,
+      10,
+      11,
       12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       15,
+       "valley"
+      ],
+      [
+       15,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       23,
+       "peak"
+      ],
+      [
+       23,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "蒙东": {
+   "peak": 0.9,
+   "flat": 0.52,
+   "valley": 0.25,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 24.0,
+   "price_zone": "全省",
+   "grid_company": "国网蒙东",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间谷段9-17适配新能源",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "蒙西": {
+   "peak": 0.85,
+   "flat": 0.5,
+   "valley": 0.24,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 22.0,
+   "price_zone": "全省",
+   "grid_company": "内蒙古电力",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间谷段9-17适配新能源",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "河南": {
+   "peak": 1.01,
+   "flat": 0.61,
+   "valley": 0.3,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "全省",
+   "grid_company": "国网河南",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "两充两放",
+   "note": "豫发改价管〔2024〕283号;夏冬谷0-7/春秋午谷11-14;尖峰1/12月17-19,7-8月20-23.参与电力市场用户可能不受固定时段约束",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
+    [
+     [
+      1,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "sharp_peak"
+      ],
+      [
+       19,
+       24,
+       "peak"
+      ]
+     ]
+    ],
+    [
+     [
+      2,
+      6
      ],
      [
       [
@@ -1365,159 +1800,291 @@
        "peak"
       ]
      ]
+    ],
+    [
+     [
+      7,
+      8
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       20,
+       "peak"
+      ],
+      [
+       20,
+       23,
+       "sharp_peak"
+      ],
+      [
+       23,
+       24,
+       "peak"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "豫发改价管〔2024〕283号;夏冬谷0-7/春秋午谷11-14;尖峰1/12月17-19,7-8月20-23.参与电力市场用户可能不受固定时段约束"
+   ]
   },
   "湖南": {
    "peak": 1.12,
-   "valley": 0.24,
    "flat": 0.6,
-   "demand": 30,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     11,
-     "flat"
-    ],
-    [
-     11,
-     14,
-     "peak"
-    ],
-    [
-     14,
-     16,
-     "flat"
-    ],
-    [
-     16,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "两充两放",
-   "note": "7-9月尖峰20-24;全国最大峰谷价差~1.06元"
-  },
-  "湖北": {
-   "peak": 1.08,
-   "valley": 0.27,
-   "flat": 0.63,
-   "demand": 28,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     15,
-     "peak"
-    ],
-    [
-     15,
-     20,
-     "flat"
-    ],
-    [
-     20,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "现货市场",
-   "note": "2026.3起取消固定分时电价,市场交易用户按现货结算.以下时段为历史参考"
-  },
-  "江西": {
-   "peak": 0.96,
-   "valley": 0.27,
-   "flat": 0.56,
-   "demand": 26,
-   "periods": [
-    [
-     0,
-     6,
-     "valley"
-    ],
-    [
-     6,
-     8,
-     "flat"
-    ],
-    [
-     8,
-     11,
-     "peak"
-    ],
-    [
-     11,
-     13,
-     "flat"
-    ],
-    [
-     13,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
-   "mode": "两充两放",
-   "note": "节假日深谷下浮70%"
-  },
-  "四川": {
-   "peak": 1.0,
    "valley": 0.24,
-   "flat": 0.55,
-   "demand": 26,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 30.0,
+   "price_zone": "全省",
+   "grid_company": "国网湖南",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "7-9月尖峰20-24;全国最大峰谷价差~1.06元",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
      [
+      1,
+      2,
       3,
       4,
       5,
       6,
+      7,
+      8,
+      9,
       10,
-      11
+      11,
+      12
      ],
      [
       [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       14,
+       "peak"
+      ],
+      [
+       14,
+       16,
+       "flat"
+      ],
+      [
+       16,
        22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "湖北": {
+   "peak": 1.08,
+   "flat": 0.63,
+   "valley": 0.27,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 28.0,
+   "price_zone": "全省",
+   "grid_company": "国网湖北",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "现货市场",
+   "note": "2026.3起取消固定分时电价,市场交易用户按现货结算.以下时段为历史参考",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       15,
+       "peak"
+      ],
+      [
+       15,
+       20,
+       "flat"
+      ],
+      [
+       20,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "江西": {
+   "peak": 0.96,
+   "flat": 0.56,
+   "valley": 0.27,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "国网江西",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "节假日深谷下浮70%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       6,
+       "valley"
+      ],
+      [
+       6,
+       8,
+       "flat"
+      ],
+      [
+       8,
+       11,
+       "peak"
+      ],
+      [
+       11,
+       13,
+       "flat"
+      ],
+      [
+       13,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
+    ]
+   ]
+  },
+  "四川": {
+   "peak": 1.0,
+   "flat": 0.55,
+   "valley": 0.24,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "国网四川",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "川发改价格〔2025〕185号3季模式;春秋谷10h/夏季峰10h谷6h;7-8月尖峰13-14+21-23",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      12
+     ],
+     [
+      [
+       0,
        8,
        "valley"
       ],
@@ -1533,6 +2100,43 @@
       ],
       [
        12,
+       16,
+       "flat"
+      ],
+      [
+       16,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
+      3,
+      4,
+      5,
+      6,
+      10,
+      11
+     ],
+     [
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
        17,
        "flat"
       ],
@@ -1540,13 +2144,69 @@
        17,
        22,
        "peak"
+      ],
+      [
+       22,
+       8,
+       "valley"
       ]
      ]
     ],
     [
      [
       7,
-      8,
+      8
+     ],
+     [
+      [
+       1,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       11,
+       "flat"
+      ],
+      [
+       11,
+       13,
+       "peak"
+      ],
+      [
+       13,
+       14,
+       "sharp_peak"
+      ],
+      [
+       14,
+       18,
+       "peak"
+      ],
+      [
+       18,
+       20,
+       "flat"
+      ],
+      [
+       20,
+       21,
+       "peak"
+      ],
+      [
+       21,
+       23,
+       "sharp_peak"
+      ],
+      [
+       23,
+       1,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
       9
      ],
      [
@@ -1581,12 +2241,43 @@
        "flat"
       ]
      ]
-    ],
+    ]
+   ]
+  },
+  "重庆": {
+   "peak": 0.95,
+   "flat": 0.56,
+   "valley": 0.28,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "国网重庆",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "现货市场",
+   "note": "已取消固定分时电价.以下时段为历史参考",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
     [
      [
-      12,
       1,
-      2
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
      ],
      [
       [
@@ -1606,524 +2297,812 @@
       ],
       [
        12,
-       16,
+       14,
        "flat"
       ],
       [
-       16,
+       14,
+       19,
+       "peak"
+      ],
+      [
+       19,
+       24,
+       "flat"
+      ]
+     ]
+    ]
+   ]
+  },
+  "云南": {
+   "peak": 0.88,
+   "flat": 0.5,
+   "valley": 0.22,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 22.0,
+   "price_zone": "全省",
+   "grid_company": "南网云南",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "现货市场",
+   "note": "已取消固定分时电价.以下时段为历史参考",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
        22,
        "peak"
       ],
       [
        22,
        24,
+       "valley"
+      ]
+     ]
+    ]
+   ]
+  },
+  "贵州": {
+   "peak": 0.9,
+   "flat": 0.52,
+   "valley": 0.26,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 24.0,
+   "price_zone": "全省",
+   "grid_company": "南网贵州",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "现货市场",
+   "note": "已取消固定分时电价.以下时段为历史参考",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
+    ]
+   ]
+  },
+  "西藏": {
+   "peak": 0.8,
+   "flat": 0.45,
+   "valley": 0.2,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 20.0,
+   "price_zone": "全省",
+   "grid_company": "国网西藏",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间全谷段适配光伏大发",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       9,
+       "valley"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
+    ]
+   ]
+  },
+  "陕西": {
+   "peak": 0.98,
+   "flat": 0.55,
+   "valley": 0.25,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 26.0,
+   "price_zone": "全省",
+   "grid_company": "国网陕西",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "现货市场",
+   "note": "2026年起全面现货市场,不再人为规定分时时段.以下时段为历史参考",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
+   "periods": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       12,
+       "peak"
+      ],
+      [
+       12,
+       14,
+       "flat"
+      ],
+      [
+       14,
+       19,
+       "peak"
+      ],
+      [
+       19,
+       24,
        "flat"
       ]
      ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "川发改价格〔2025〕185号3季模式;春秋谷10h/夏季峰10h谷6h;7-8月尖峰13-14+21-23"
-  },
-  "重庆": {
-   "peak": 0.95,
-   "valley": 0.28,
-   "flat": 0.56,
-   "demand": 26,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     19,
-     "peak"
-    ],
-    [
-     19,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "现货市场",
-   "note": "已取消固定分时电价.以下时段为历史参考"
-  },
-  "云南": {
-   "peak": 0.88,
-   "valley": 0.22,
-   "flat": 0.5,
-   "demand": 22,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
-   "mode": "现货市场",
-   "note": "已取消固定分时电价.以下时段为历史参考"
-  },
-  "贵州": {
-   "peak": 0.9,
-   "valley": 0.26,
-   "flat": 0.52,
-   "demand": 24,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
-   "mode": "现货市场",
-   "note": "已取消固定分时电价.以下时段为历史参考"
-  },
-  "西藏": {
-   "peak": 0.8,
-   "valley": 0.2,
-   "flat": 0.45,
-   "demand": 20,
-   "periods": [
-    [
-     0,
-     9,
-     "valley"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
-    ]
-   ],
-   "mode": "一充一放",
-   "note": "日间全谷段适配光伏大发"
-  },
-  "陕西": {
-   "peak": 0.98,
-   "valley": 0.25,
-   "flat": 0.55,
-   "demand": 26,
-   "periods": [
-    [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     10,
-     "flat"
-    ],
-    [
-     10,
-     12,
-     "peak"
-    ],
-    [
-     12,
-     14,
-     "flat"
-    ],
-    [
-     14,
-     19,
-     "peak"
-    ],
-    [
-     19,
-     24,
-     "flat"
-    ]
-   ],
-   "mode": "现货市场",
-   "note": "2026年起全面现货市场,不再人为规定分时时段.以下时段为历史参考"
+   ]
   },
   "甘肃": {
    "peak": 0.82,
-   "valley": 0.22,
    "flat": 0.48,
-   "demand": 22,
+   "valley": 0.22,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 22.0,
+   "price_zone": "全省",
+   "grid_company": "国网甘肃",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间谷段9-17适配新能源;无尖峰",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "一充一放",
-   "note": "日间谷段9-17适配新能源;无尖峰"
+   ]
   },
   "青海": {
    "peak": 0.8,
-   "valley": 0.2,
    "flat": 0.45,
-   "demand": 20,
+   "valley": 0.2,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 20.0,
+   "price_zone": "全省",
+   "grid_company": "国网青海",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间全谷段;峰谷比4.4:1;秋冬季午前尖峰8-9",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "一充一放",
-   "note": "日间全谷段;峰谷比4.4:1;秋冬季午前尖峰8-9"
+   ]
   },
   "宁夏": {
    "peak": 0.82,
-   "valley": 0.22,
    "flat": 0.48,
-   "demand": 22,
+   "valley": 0.22,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 22.0,
+   "price_zone": "全省",
+   "grid_company": "国网宁夏",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "日间谷段9-17适配新能源",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "一充一放",
-   "note": "日间谷段9-17适配新能源"
+   ]
   },
   "新疆": {
    "peak": 0.78,
-   "valley": 0.18,
    "flat": 0.42,
-   "demand": 20,
+   "valley": 0.18,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 20.0,
+   "price_zone": "全省",
+   "grid_company": "国网新疆",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "一充一放",
+   "note": "低谷下浮75%;深谷下浮90%全国最高",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     8,
-     "valley"
-    ],
-    [
-     8,
-     9,
-     "flat"
-    ],
-    [
-     9,
-     17,
-     "valley"
-    ],
-    [
-     17,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       8,
+       "valley"
+      ],
+      [
+       8,
+       9,
+       "flat"
+      ],
+      [
+       9,
+       17,
+       "valley"
+      ],
+      [
+       17,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "一充一放",
-   "note": "低谷下浮75%;深谷下浮90%全国最高"
+   ]
   },
   "辽宁": {
    "peak": 0.95,
-   "valley": 0.25,
    "flat": 0.55,
-   "demand": 24,
+   "valley": 0.25,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 24.0,
+   "price_zone": "全省",
+   "grid_company": "国网辽宁",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "两充两放",
+   "note": "已取消固定分时;峰谷浮动25%",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
    "periods": [
     [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     8,
-     "flat"
-    ],
-    [
-     8,
-     11,
-     "peak"
-    ],
-    [
-     11,
-     13,
-     "flat"
-    ],
-    [
-     13,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       8,
+       "flat"
+      ],
+      [
+       8,
+       11,
+       "peak"
+      ],
+      [
+       11,
+       13,
+       "flat"
+      ],
+      [
+       13,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "已取消固定分时;峰谷浮动25%"
+   ]
   },
   "吉林": {
    "peak": 0.92,
-   "valley": 0.24,
    "flat": 0.52,
-   "demand": 24,
+   "valley": 0.24,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 24.0,
+   "price_zone": "全省",
+   "grid_company": "国网吉林",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "market",
+   "market_source": "第一财经/国家能源局转载：9地已明确取消固定分时电价(2026-02-06);依据发改能源规〔2025〕1656号,2026-03-01起对入市用户不再人为规定分时电价水平和时段",
+   "mode": "两充两放",
+   "note": "已取消固定分时;无尖峰",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
+   "verify_status": "policy",
    "periods": [
     [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     8,
-     "flat"
-    ],
-    [
-     8,
-     11,
-     "peak"
-    ],
-    [
-     11,
-     13,
-     "flat"
-    ],
-    [
-     13,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       8,
+       "flat"
+      ],
+      [
+       8,
+       11,
+       "peak"
+      ],
+      [
+       11,
+       13,
+       "flat"
+      ],
+      [
+       13,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "已取消固定分时;无尖峰"
+   ]
   },
   "黑龙江": {
    "peak": 0.9,
-   "valley": 0.24,
    "flat": 0.5,
-   "demand": 22,
+   "valley": 0.24,
+   "sharp_peak": null,
+   "deep_valley": null,
+   "demand": 22.0,
+   "price_zone": "全省",
+   "grid_company": "国网黑龙江",
+   "voltage_level": null,
+   "proxy_regime": "regulated",
+   "market_regime": "unknown",
+   "market_source": "",
+   "mode": "两充两放",
+   "note": "无尖峰;峰谷价差较小",
+   "effective_from": null,
+   "effective_to": null,
+   "source_url": null,
+   "verify_status": "none",
    "periods": [
     [
-     0,
-     7,
-     "valley"
-    ],
-    [
-     7,
-     8,
-     "flat"
-    ],
-    [
-     8,
-     11,
-     "peak"
-    ],
-    [
-     11,
-     13,
-     "flat"
-    ],
-    [
-     13,
-     17,
-     "peak"
-    ],
-    [
-     17,
-     19,
-     "flat"
-    ],
-    [
-     19,
-     22,
-     "peak"
-    ],
-    [
-     22,
-     24,
-     "valley"
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      [
+       0,
+       7,
+       "valley"
+      ],
+      [
+       7,
+       8,
+       "flat"
+      ],
+      [
+       8,
+       11,
+       "peak"
+      ],
+      [
+       11,
+       13,
+       "flat"
+      ],
+      [
+       13,
+       17,
+       "peak"
+      ],
+      [
+       17,
+       19,
+       "flat"
+      ],
+      [
+       19,
+       22,
+       "peak"
+      ],
+      [
+       22,
+       24,
+       "valley"
+      ]
+     ]
     ]
-   ],
-   "mode": "两充两放",
-   "note": "无尖峰;峰谷价差较小"
+   ]
   }
  }
 }

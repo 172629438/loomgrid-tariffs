@@ -30,6 +30,8 @@ DATA = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "data
 
 KNOWN_TYPES = {"peak", "flat", "valley", "sharp_peak", "deep_valley",
                "charge", "discharge"}
+KNOWN_REGIMES = {"regulated", "market", "mixed", "pending", "unknown"}
+KNOWN_VERIFY = {"none", "policy", "price", "full"}
 
 fails: list[str] = []
 warns: list[str] = []
@@ -73,29 +75,57 @@ if len(sum_set) != len(summary):
     fail(f"summary.csv 存在重复省份：{len(summary)} 行 / {len(sum_set)} 个省份")
 
 # ── 2. 价格单调 ──
+placeholder: list[str] = []
 for r in summary:
     prov = r["province"]
-    try:
-        peak = float(r["price_peak_cny_per_kwh"])
-        flat = float(r["price_flat_cny_per_kwh"])
-        valley = float(r["price_valley_cny_per_kwh"])
-    except (TypeError, ValueError):
-        fail(f"{prov}：价格字段无法解析为数字")
-        continue
-    if min(peak, flat, valley) <= 0:
-        fail(f"{prov}：存在非正价格（peak={peak} flat={flat} valley={valley}）")
-    if not (peak > flat > valley):
-        fail(f"{prov}：价格未满足 peak>flat>valley（{peak}/{flat}/{valley}）")
+    raw = [(r.get("price_peak_cny_per_kwh") or "").strip(),
+           (r.get("price_flat_cny_per_kwh") or "").strip(),
+           (r.get("price_valley_cny_per_kwh") or "").strip()]
+
+    # 允许整行为占位（价格全空），但必须显式声明未核实
+    if not any(raw):
+        placeholder.append(prov)
+        if (r.get("verify_status") or "").strip() == "full":
+            fail(f"{prov}：价格为空的占位行却标记 verify_status=full")
+        warn(f"{prov}：价格为占位空值（结构已登记、数值未取）")
+    else:
+        if not all(raw):
+            fail(f"{prov}：峰/平/谷价格只有部分填写 {raw}")
+            continue
+        try:
+            peak, flat, valley = (float(x) for x in raw)
+        except ValueError:
+            fail(f"{prov}：价格字段无法解析为数字")
+            continue
+        if min(peak, flat, valley) <= 0:
+            fail(f"{prov}：存在非正价格（peak={peak} flat={flat} valley={valley}）")
+        if not (peak > flat > valley):
+            fail(f"{prov}：价格未满足 peak>flat>valley（{peak}/{flat}/{valley}）")
 
     if not r.get("source_note", "").strip():
         warn(f"{prov}：source_note 为空，无法追溯政策出处")
-    if not r.get("effective_from", "").strip():
+    if not (r.get("effective_from") or "").strip():
         warn(f"{prov}：effective_from 为空")
+
+    # 新增枚举词表
+    mr = (r.get("market_regime") or "").strip()
+    if mr and mr not in KNOWN_REGIMES:
+        fail(f"{prov}：未知 market_regime {mr!r}")
+    vs = (r.get("verify_status") or "").strip()
+    if vs and vs not in KNOWN_VERIFY:
+        fail(f"{prov}：未知 verify_status {vs!r}")
+    if mr == "market" and not (r.get("source_url") or "").strip():
+        warn(f"{prov}：标记为市场化定价却无 source_url")
 
 # ── 3~5. 时段连续性 ──
 by_group: dict[tuple[str, str], list[dict]] = defaultdict(list)
 for r in periods:
     by_group[(r["province"], r["season"])].append(r)
+
+# 有 summary 行却没有任何时段组（占位省），单独提示而不当作错误
+no_period = sorted(sum_set - {k[0] for k in by_group})
+for p in no_period:
+    warn(f"{p}：无时段划分记录（价格与时段均待补）")
 
 for (prov, season), rows in sorted(by_group.items()):
     # 5. 类型词表
@@ -150,6 +180,8 @@ for r in periods:
 # ── 汇总 ──
 print(f"data dir     : {DATA}")
 print(f"provinces    : {len(sum_set)}")
+print(f"placeholder  : {len(placeholder)} {placeholder}")
+print(f"no-period    : {len(no_period)} {no_period}")
 print(f"period rows  : {len(periods)}")
 print(f"season groups: {len(by_group)}")
 print(f"dr rows      : {len(dr)}")
