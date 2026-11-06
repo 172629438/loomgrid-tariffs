@@ -3500,11 +3500,11 @@
    "market_regime": "unknown",
    "market_source": "",
    "mode": "一充一放",
-   "note": "日间谷段9-17适配新能源;无尖峰",
-   "effective_from": null,
+   "note": "《优化调整工商业等用户峰谷分时电价政策》,2024-08-01起施行;高峰6-8、18-23(7h),平段23-6(次日)、8-10、16-18(11h),低谷10-16(6h);原各8小时调整为峰7/平11/谷6;居民与电采暖用户不变;文号未获取(省发改委原文页对自动抓取返回412),来源为省政府新闻办发布会报道",
+   "effective_from": "2024-08-01",
    "effective_to": null,
-   "source_url": null,
-   "verify_status": "none",
+   "source_url": "http://fbh.gscn.com.cn/system/2024/07/08/013167313.shtml",
+   "verify_status": "policy",
    "periods": [
     [
      [
@@ -3524,28 +3524,38 @@
      [
       [
        0,
-       7,
-       "valley"
-      ],
-      [
-       7,
-       9,
+       6,
        "flat"
       ],
       [
-       9,
-       17,
-       "valley"
-      ],
-      [
-       17,
-       22,
+       6,
+       8,
        "peak"
       ],
       [
-       22,
-       24,
+       8,
+       10,
+       "flat"
+      ],
+      [
+       10,
+       16,
        "valley"
+      ],
+      [
+       16,
+       18,
+       "flat"
+      ],
+      [
+       18,
+       23,
+       "peak"
+      ],
+      [
+       23,
+       24,
+       "flat"
       ]
      ]
     ]
