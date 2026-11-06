@@ -3657,23 +3657,17 @@
    "market_regime": "unknown",
    "market_source": "",
    "mode": "一充一放",
-   "note": "日间全谷段;峰谷比4.4:1;秋冬季午前尖峰8-9",
-   "effective_from": null,
+   "note": "青发改价格〔2024〕179号,2024-05-01起执行;废止〔2021〕814号/〔2023〕647号/〔2023〕775号;高峰7-9、17-23,低谷9-17,其余平段(0-7、23-24);尖峰:一、四季度每日8-9、19-21,较平段上浮100%;高峰上浮63%、低谷下浮65%",
+   "effective_from": "2024-05-01",
    "effective_to": null,
-   "source_url": null,
-   "verify_status": "none",
+   "source_url": "http://fgw.qinghai.gov.cn/zfxxgk/jjzn/wjgcs/jgc/zcwj/202412/t20241219_88348_ghb.html",
+   "verify_status": "policy",
    "periods": [
     [
      [
       1,
       2,
       3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
       10,
       11,
       12
@@ -3681,28 +3675,80 @@
      [
       [
        0,
-       8,
-       "valley"
-      ],
-      [
-       8,
-       9,
+       7,
        "flat"
       ],
       [
+       7,
+       8,
+       "peak"
+      ],
+      [
+       8,
+       9,
+       "sharp_peak"
+      ],
+      [
        9,
        17,
        "valley"
       ],
       [
        17,
-       22,
+       19,
        "peak"
       ],
       [
-       22,
+       19,
+       21,
+       "sharp_peak"
+      ],
+      [
+       21,
+       23,
+       "peak"
+      ],
+      [
+       23,
        24,
+       "flat"
+      ]
+     ]
+    ],
+    [
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     [
+      [
+       0,
+       7,
+       "flat"
+      ],
+      [
+       7,
+       9,
+       "peak"
+      ],
+      [
+       9,
+       17,
        "valley"
+      ],
+      [
+       17,
+       23,
+       "peak"
+      ],
+      [
+       23,
+       24,
+       "flat"
       ]
      ]
     ]
