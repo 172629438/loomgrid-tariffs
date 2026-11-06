@@ -30,6 +30,7 @@ DATA = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "data
 
 KNOWN_TYPES = {"peak", "flat", "valley", "sharp_peak", "deep_valley",
                "charge", "discharge"}
+# start_hour / end_hour 支持 0.5 小时粒度（江西午间深谷 11:30-14:30 等）
 KNOWN_REGIMES = {"regulated", "market", "mixed", "pending", "unknown"}
 KNOWN_VERIFY = {"none", "policy", "price", "full"}
 
@@ -133,32 +134,40 @@ for (prov, season), rows in sorted(by_group.items()):
         if r["period_type"] not in KNOWN_TYPES:
             fail(f"{prov}/{season}：未知 period_type {r['period_type']!r}")
 
-    # 3. 展开成小时占用，检查覆盖与重叠
-    owner: dict[int, str] = {}
+    # 3. 展开成小时占用，检查覆盖与重叠（支持 0.5 小时粒度）
+    def hours_of(start: float, end: float) -> list[float]:
+        e = end + 24 if end <= start else end
+        out, x = [], start
+        while x < e - 1e-9:
+            out.append(round(x % 24, 2))
+            x += 0.5
+        return out
+
+    owner: dict[float, str] = {}
     for r in rows:
         try:
-            start, end = int(r["start_hour"]), int(r["end_hour"])
+            start, end = float(r["start_hour"]), float(r["end_hour"])
         except ValueError:
-            fail(f"{prov}/{season}：start/end 非整数")
+            fail(f"{prov}/{season}：start/end 非数字")
             continue
-        hours = list(range(start, 24)) + list(range(0, end)) if end < start else list(range(start, end))
+        hours = hours_of(start, end)
         if not hours:
             fail(f"{prov}/{season}：时段 {start}→{end} 为空")
         for h in hours:
             if h in owner:
-                fail(f"{prov}/{season}：{h:02d} 时被两段同时占用"
+                fail(f"{prov}/{season}：{h:g} 时被两段同时占用"
                      f"（{owner[h]} 与 {r['period_type']}）")
             owner[h] = r["period_type"]
 
-    missing = [h for h in range(24) if h not in owner]
+    missing = [h for h in [i * 0.5 for i in range(48)] if round(h, 2) not in owner]
     if missing:
-        fail(f"{prov}/{season}：未覆盖的小时 {missing}")
+        fail(f"{prov}/{season}：未覆盖的小时 {missing[:8]}{'...' if len(missing) > 8 else ''}")
 
     # 4. duration 求和
     total = 0.0
     for r in rows:
         try:
-            start, end = int(r["start_hour"]), int(r["end_hour"])
+            start, end = float(r["start_hour"]), float(r["end_hour"])
         except ValueError:
             continue
         total += (end - start) % 24 or 24
@@ -168,7 +177,7 @@ for (prov, season), rows in sorted(by_group.items()):
 # ── 6. duration_h 字段自洽 ──
 for r in periods:
     try:
-        start, end = int(r["start_hour"]), int(r["end_hour"])
+        start, end = float(r["start_hour"]), float(r["end_hour"])
         declared = float(r["duration_h"])
     except (TypeError, ValueError):
         fail(f"{r['province']}/{r['season']}：duration_h 非数字")
