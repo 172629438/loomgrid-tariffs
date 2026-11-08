@@ -140,12 +140,12 @@
    "market_regime": "pending",
    "market_source": "取消固定分时电价方案处于征求意见阶段（NEA/第一财经 2026-02-06）",
    "mode": "两充两放",
-   "note": "苏发改价格发〔2025〕426号《关于优化工商业分时电价结构促进新能源消纳降低企业用电成本支持经济社会发展的通知》，2025-06-01 起执行",
+   "note": "苏发改价格发〔2025〕426号,2025-06-01起执行;高峰15-22;低谷夏冬(1-2、6-8、12月)0-6、11-13,春秋(3-5、9-11月)2-6、10-14;其余平段;峰上浮70%、谷下浮65%;夏冬季尖峰(315kVA及以上工业)14-15、19:30-21:30——来源为二手解读且与高峰时段表述冲突，未入库待官方文件确认",
    "effective_from": "2025-06-01",
    "effective_to": null,
    "source_url": "https://fgw.nanjing.gov.cn/njsfzhggwyh/202505/t20250506_5140665.html",
    "verify_status": "policy",
-   "period_table_status": "unverified",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -174,11 +174,11 @@
       ],
       [
        13,
-       14,
+       15,
        "flat"
       ],
       [
-       14,
+       15,
        22,
        "peak"
       ],
