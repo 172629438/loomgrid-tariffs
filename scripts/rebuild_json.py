@@ -71,6 +71,7 @@ for r in summary:
         "effective_to": r.get("effective_to") or None,
         "source_url": r.get("source_url") or None,
         "verify_status": r.get("verify_status", ""),
+        "period_table_status": r.get("period_table_status", ""),
         "periods": groups,
     }
 

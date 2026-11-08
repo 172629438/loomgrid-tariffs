@@ -32,6 +32,7 @@ KNOWN_TYPES = {"peak", "flat", "valley", "sharp_peak", "deep_valley",
                "charge", "discharge"}
 # start_hour / end_hour 支持 0.5 小时粒度（江西午间深谷 11:30-14:30 等）
 KNOWN_REGIMES = {"regulated", "market", "mixed", "pending", "unknown"}
+KNOWN_PERIOD_STATUS = {"verified", "partial", "template_suspected", "unverified"}
 KNOWN_VERIFY = {"none", "policy", "price", "full"}
 
 fails: list[str] = []
@@ -117,6 +118,12 @@ for r in summary:
         fail(f"{prov}：未知 verify_status {vs!r}")
     if mr == "market" and not (r.get("source_url") or "").strip():
         warn(f"{prov}：标记为市场化定价却无 source_url")
+
+    ps = (r.get("period_table_status") or "").strip()
+    if ps and ps not in KNOWN_PERIOD_STATUS:
+        fail(f"{prov}：未知 period_table_status {ps!r}")
+    if ps == "verified" and not (r.get("source_url") or "").strip():
+        fail(f"{prov}：时段表标记 verified 却无 source_url")
 
 # ── 3~5. 时段连续性 ──
 by_group: dict[tuple[str, str], list[dict]] = defaultdict(list)

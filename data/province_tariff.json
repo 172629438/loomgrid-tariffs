@@ -28,6 +28,7 @@
    "effective_to": null,
    "source_url": null,
    "verify_status": "none",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -144,6 +145,7 @@
    "effective_to": null,
    "source_url": "https://fgw.nanjing.gov.cn/njsfzhggwyh/202505/t20250506_5140665.html",
    "verify_status": "policy",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -255,6 +257,7 @@
    "effective_to": null,
    "source_url": "https://www.ahjx.gov.cn/OpennessContent/show/3549242.html",
    "verify_status": "policy",
+   "period_table_status": "partial",
    "periods": [
     [
      [
@@ -443,6 +446,7 @@
    "effective_to": null,
    "source_url": "https://www.shanghai.gov.cn/gwk/search/content/e2652e3ab7ee49438d6e82af8880b160",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -656,6 +660,7 @@
    "effective_to": null,
    "source_url": "https://www.chujiewang.net/cxw/col151/4220",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -797,6 +802,7 @@
    "effective_to": null,
    "source_url": null,
    "verify_status": "none",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -923,6 +929,7 @@
    "effective_to": null,
    "source_url": "http://www.luzhai.gov.cn/bmjy/bmjygg/P020230811309393117104.pdf",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -993,6 +1000,7 @@
    "effective_to": null,
    "source_url": null,
    "verify_status": "none",
+   "period_table_status": "template_suspected",
    "periods": [
     [
      [
@@ -1073,6 +1081,7 @@
    "effective_to": null,
    "source_url": "https://jndpc.jinan.gov.cn/col2191/art/2025/art_2191_4789557.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -1352,6 +1361,7 @@
    "effective_to": null,
    "source_url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202308/t20230822_3227443.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -1524,6 +1534,7 @@
    "effective_to": null,
    "source_url": "https://fzgg.tj.gov.cn/sy_47324/gabsycs/gdgh/202509/t20250902_7124414.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -1701,6 +1712,7 @@
    "effective_to": null,
    "source_url": "https://www.tsgxq.gov.cn/uploads/files/df5d61e1e37c15dfe0add46933f23775.pdf",
    "verify_status": "policy",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -1929,6 +1941,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "unverified",
    "periods": []
   },
   "山西": {
@@ -1950,6 +1963,7 @@
    "effective_to": null,
    "source_url": "https://fgw.shanxi.gov.cn/sxfgwzwgk/sxsfgwxxgk/xxgkml/tz/202602/t20260228_10069158.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -2188,6 +2202,7 @@
    "effective_to": null,
    "source_url": "https://www.nmgxny.com/policy/1445.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -2268,6 +2283,7 @@
    "effective_to": null,
    "source_url": "https://www.nmgxny.com/policy/1446.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -2409,6 +2425,7 @@
    "effective_to": null,
    "source_url": "https://fgw.henan.gov.cn/2024/05-29/3000232.html",
    "verify_status": "policy",
+   "period_table_status": "partial",
    "periods": [
     [
      [
@@ -2557,6 +2574,7 @@
    "effective_to": null,
    "source_url": "https://www.hunan.gov.cn/zqt/zcsd/202507/t20250704_33729798.html",
    "verify_status": "policy",
+   "period_table_status": "partial",
    "periods": [
     [
      [
@@ -2704,6 +2722,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -2774,6 +2793,7 @@
    "effective_to": null,
    "source_url": "https://www.ganxian.gov.cn/gxqxxgk/c111133/202506/606702474b444f6084b52f784fdc3278.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -3038,6 +3058,7 @@
    "effective_to": null,
    "source_url": "https://cn.solarbe.com/news/20250506/50002141.html",
    "verify_status": "policy",
+   "period_table_status": "partial",
    "periods": [
     [
      [
@@ -3226,6 +3247,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "template_suspected",
    "periods": [
     [
      [
@@ -3296,6 +3318,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "template_suspected",
    "periods": [
     [
      [
@@ -3376,6 +3399,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "template_suspected",
    "periods": [
     [
      [
@@ -3456,6 +3480,7 @@
    "effective_to": null,
    "source_url": null,
    "verify_status": "none",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -3516,6 +3541,7 @@
    "effective_to": null,
    "source_url": "https://qidian.sxtvs.com/timing/share/content/10627215",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -3678,6 +3704,7 @@
    "effective_to": null,
    "source_url": "http://fbh.gscn.com.cn/system/2024/07/08/013167313.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -3753,6 +3780,7 @@
    "effective_to": null,
    "source_url": "http://fgw.qinghai.gov.cn/zfxxgk/jjzn/wjgcs/jgc/zcwj/202412/t20241219_88348_ghb.html",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -3864,6 +3892,7 @@
    "effective_to": null,
    "source_url": null,
    "verify_status": "none",
+   "period_table_status": "template_suspected",
    "periods": [
     [
      [
@@ -3929,6 +3958,7 @@
    "effective_to": null,
    "source_url": "https://xjdrc.xinjiang.gov.cn/xjfgw/c108361/202312/e5c0f50c7028486ebe36ea253829b340.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -4162,6 +4192,7 @@
    "effective_to": null,
    "source_url": "https://fgw.ln.gov.cn/fgw/index/tzgg/2023083014061818174/index.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [
@@ -4308,6 +4339,7 @@
    "effective_to": null,
    "source_url": "https://www.nea.gov.cn/20260206/185f3d029e514da89013bf63aa5516d3/c.html",
    "verify_status": "policy",
+   "period_table_status": "unverified",
    "periods": [
     [
      [
@@ -4388,6 +4420,7 @@
    "effective_to": null,
    "source_url": "https://drc.hlj.gov.cn/drc/c111444/202410/c00_31776224.shtml",
    "verify_status": "policy",
+   "period_table_status": "verified",
    "periods": [
     [
      [

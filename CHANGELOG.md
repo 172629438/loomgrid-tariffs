@@ -6,6 +6,18 @@
 
 ---
 
+## [2026.06-rev15] — 2026-11-08
+
+### Added
+- **新增字段 `period_table_status`**，把「这张时段表能不能用」写进数据本身而非只在文档里：`verified` 16 省 / `partial` 4 省 / `template_suspected` 5 省 / `unverified` 8 省。
+- `validate.py` 新增词表校验；标记 `verified` 却无 `source_url` 判失败。
+- README 新增「时段表可信度」一节，解释为何 `template_suspected` 需单独一档：这类表看着完整、能算、不报错，但数字是拿别的省套的，比空值更危险。
+
+### Investigated but unresolved
+- 海南、云南、贵州、宁夏、重庆：本轮多方向检索仍未取得可用的官方时段文件（重庆、宁夏已累计检索 4 轮以上）。未拿邻省数据填充，也未用未经核实的二级汇总代替，均维持原状并标记为 `template_suspected`。
+
+---
+
 ## [2026.06-rev14] — 2026-11-08
 
 ### Fixed
