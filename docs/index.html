@@ -326,7 +326,40 @@ footer{padding:clamp(56px,7vw,88px) 0 clamp(40px,5vw,64px);border-top:1px solid 
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
   background:var(--gold);transition:width var(--t-2) var(--ease-out);
 }
-.sorts button[aria-pressed="true"]::after{width:calc(100% - 9px)}
+.sorts button[aria-pressed="true"].tog{color:var(--ice)}
+.sorts button.tog[aria-pressed="true"]::after{background:var(--ice)}
+
+/* ── 时段带上的当前时刻 */
+.bar{position:relative}
+.nowline{
+  position:absolute;top:-5px;bottom:-5px;width:1px;background:var(--gold);
+  z-index:2;pointer-events:none;opacity:.9;
+}
+.nowline::before{
+  content:"";position:absolute;top:-2px;left:-2px;width:5px;height:5px;
+  background:var(--gold);border-radius:50%;
+}
+.nowtag{
+  display:none;
+}
+
+/* ── 详情头操作区 ── */
+.d-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copybtn{
+  background:none;border:1px solid var(--line);color:var(--ash2);
+  font-family:var(--mono);font-size:var(--fs-11);padding:5px 10px;
+  cursor:pointer;letter-spacing:.02em;
+  transition:color var(--t-1) var(--ease-out),border-color var(--t-1) var(--ease-out);
+}
+.copybtn:hover{color:var(--ink);border-color:var(--ash3)}
+.copybtn.ok{color:var(--ice);border-color:rgba(143,221,255,.42)}
+.nowband{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:var(--fs-11);color:var(--ash2);
+  border:1px solid var(--line);padding:5px 10px;letter-spacing:.02em;
+}
+.nowband b{font-weight:400}
+.nowband .pip{width:6px;height:6px;background:var(--gold);display:block}
 
 /* 搜索框聚焦时的左侧刻度 */
 .searchbox::before{
@@ -393,13 +426,14 @@ footer{padding:clamp(56px,7vw,88px) 0 clamp(40px,5vw,64px);border-top:1px solid 
       <aside class="side">
         <div class="side-head">
           <div class="searchbox">
-            <input id="q" type="search" placeholder="省名 / 电网 / 价区" autocomplete="off" spellcheck="false" aria-label="搜索省级行政区">
+            <input id="q" type="search" placeholder="省名 / 拼音 / 电网" autocomplete="off" spellcheck="false" aria-label="搜索省级行政区">
             <button class="clr" id="clr" aria-label="清空" hidden>×</button>
           </div>
           <div class="sorts" id="sorts">
             <button data-sort="name" aria-pressed="true">名称</button>
             <button data-sort="spread" aria-pressed="false">峰谷价差</button>
             <button data-sort="trust" aria-pressed="false">可信度</button>
+            <button id="usable" class="tog" aria-pressed="false">只看可用</button>
           </div>
         </div>
         <div class="listhead"><span>区域</span><span>峰谷价差</span></div>
@@ -525,8 +559,22 @@ const STATUS_ORDER = { verified:0, partial:1, template_suspected:2, unverified:3
 
 let sortBy = "name";
 let current = null;
+let onlyUsable = false;
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const wait = ms => new Promise(r => setTimeout(r, ms));
+
+/* 拼音与英文检索：打 zj 也能出浙江 */
+const PY = {
+  "浙江":"zj zhejiang", "江苏":"js jiangsu", "安徽":"ah anhui", "上海":"sh shanghai",
+  "福建":"fj fujian", "广东":"gd guangdong", "广西":"gx guangxi", "海南":"hn hainan",
+  "山东":"sd shandong", "北京":"bj beijing", "天津":"tj tianjin", "冀北":"jb jibei",
+  "山西":"sx shanxi", "蒙东":"md mengdong", "蒙西":"mx mengxi", "河南":"hn henan",
+  "湖南":"hn hunan", "湖北":"hb hubei", "江西":"jx jiangxi", "四川":"sc sichuan",
+  "重庆":"cq chongqing", "云南":"yn yunnan", "贵州":"gz guizhou", "西藏":"xz xizang",
+  "陕西":"sx shaanxi", "甘肃":"gs gansu", "青海":"qh qinghai", "宁夏":"nx ningxia",
+  "新疆":"xj xinjiang", "辽宁":"ln liaoning", "吉林":"jl jilin", "黑龙江":"hlj heilongjiang",
+  "河北南网":"hbnw hebeinamwang"
+};
 
 const nav = document.getElementById("nav");
 addEventListener("scroll", () => {
@@ -547,10 +595,14 @@ const fmt = n => String(Math.floor(n)).padStart(2,"0") + (n % 1 ? ":30" : ":00")
 const listEl = document.getElementById("list");
 function renderList(animate){
   const kw = document.getElementById("q").value.trim().toLowerCase();
-  let rows = PROVINCES.filter(p => !kw ||
-    p.p.toLowerCase().includes(kw) ||
-    (p.grid||"").toLowerCase().includes(kw) ||
-    (p.zone||"").toLowerCase().includes(kw));
+  let rows = PROVINCES.filter(p => {
+    if (onlyUsable && p.st !== "verified") return false;
+    if (!kw) return true;
+    return p.p.toLowerCase().includes(kw) ||
+      (p.grid||"").toLowerCase().includes(kw) ||
+      (p.zone||"").toLowerCase().includes(kw) ||
+      (PY[p.p]||"").includes(kw);
+  });
 
   rows.sort((a,b)=>{
     if (sortBy === "spread") return spread(b) - spread(a);
@@ -598,10 +650,11 @@ function animateBars(){
 }
 
 /* 切换省份：优先用 View Transitions，不支持或报错则 CSS 淡出淡入 */
-async function selectProvince(p){
+async function selectProvince(p, silent){
   if (current === p.p) return;
   const d = document.getElementById("detail");
   const keepScroll = listEl.scrollTop;
+  if (!silent) history.replaceState(null, "", "#" + encodeURIComponent(p.p));
 
   if (!REDUCE && document.startViewTransition){
     try {
@@ -647,6 +700,12 @@ function renderDetail(p){
   const sp = spread(p);
   const badgeCls = p.st === "verified" ? "v" : p.st === "template_suspected" ? "t" : p.st === "partial" ? "" : "w";
 
+  /* 当前时刻：时段带上的竖线与标签要用，必须先于 seasons 定义 */
+  const now = new Date();
+  const nowH = now.getHours() + now.getMinutes() / 60;
+  const nowPct = (nowH / 24) * 100;
+  const nowLabel = String(now.getHours()).padStart(2,"0") + ":" + String(now.getMinutes()).padStart(2,"0");
+
   let warn = "";
   if (p.st === "template_suspected"){
     warn = '<div class="d-warn strong"><b>这张时段表不可用。</b>它与另一个省逐行相同，可证实为模板复制——数字不是从政策文件读出来的。价格字段可参考，时段不能进测算。</div>';
@@ -665,16 +724,17 @@ function renderDetail(p){
 
   let seasons = "";
   if (p.seas && p.seas.length){
-    seasons = '<div class="seasons">' + p.seas.map(s => {
+    seasons = '<div class="seasons">' + p.seas.map((s, si) => {
       const bar = s.s.map(([a,b,t]) => {
         const w = (b-a)/24*100;
         return '<div data-w="' + w + '%" style="width:' + (REDUCE ? w + '%' : '0') +
           ';background:' + (FILL[t]||FILL.flat) +
           '" title="' + NAME[t] + ' ' + fmt(a) + '–' + fmt(b) + '"></div>';
       }).join("");
+      const nowline = '<div class="nowline" style="left:' + nowPct + '%"></div>';
       return '<div class="season"><div class="season-head"><h3>' + s.n + '</h3>' +
         '<span class="m">' + p.cite.split(";")[0] + '</span></div>' +
-        '<div class="bar">' + bar + '</div>' +
+        '<div class="bar">' + bar + nowline + '</div>' +
         '<div class="axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></div>';
     }).join("") +
     '<div class="legend">' +
@@ -699,8 +759,11 @@ function renderDetail(p){
   detailEl.innerHTML =
     '<div class="d-head"><div>' +
       '<div class="d-name">' + p.p + '</div>' +
-      '<div class="d-meta">' + [p.grid, p.zone, p.eff ? "生效 " + p.eff : "生效日期待考"].filter(Boolean).join("　·　") + '</div>' +
-    '</div><span class="badge ' + badgeCls + '">' + (STATUS_NAME[p.st] || p.st) + '</span></div>' +
+      '<div class="d-meta">' + [p.grid, p.zone, p.eff ? "生效 " + p.eff : "生效日期待考", "现在 " + nowLabel].filter(Boolean).join("　·　") + '</div>' +
+    '</div><div class="d-actions">' +
+      '<button class="copybtn" id="copyBtn" type="button">复制数据</button>' +
+      '<span class="badge ' + badgeCls + '">' + (STATUS_NAME[p.st] || p.st) + '</span>' +
+    '</div></div>' +
     warn +
     '<div class="prices">' +
       price(p.pk, "pk", "元/kWh 高峰") +
@@ -718,6 +781,31 @@ function renderDetail(p){
   detailEl.classList.remove("pane-fresh");
   void detailEl.offsetWidth;
   detailEl.classList.add("pane-fresh");
+
+  /* 复制：生成一段可直接贴进文档或聊天窗的纯文本 */
+  const copyBtn = document.getElementById("copyBtn");
+  if (copyBtn){
+    copyBtn.onclick = async () => {
+      const lines = [
+        p.p + (p.grid ? " · " + p.grid : "") + (p.zone && p.zone !== "全省" ? " · " + p.zone : ""),
+        "高峰 " + (p.pk || "待取") + " / 平段 " + (p.fl || "待取") + " / 低谷 " + (p.vl || "待取") + " 元/kWh",
+        sp >= 0 ? "峰谷价差 " + sp.toFixed(3) + " 元/kWh" : "峰谷价差 两侧未齐",
+        p.eff ? "生效 " + p.eff : "生效日期待考",
+        "政策 " + (p.cite ? p.cite.split(";")[0] : "未收录"),
+        "核实状态 " + (STATUS_NAME[p.st] || p.st),
+        "来源 " + (p.url || "未收录"),
+        "https://172629438.github.io/loomgrid-tariffs/#" + encodeURIComponent(p.p)
+      ];
+      try {
+        await navigator.clipboard.writeText(lines.join("\n"));
+        copyBtn.textContent = "已复制";
+        copyBtn.classList.add("ok");
+      } catch (e) {
+        copyBtn.textContent = "复制失败";
+      }
+      setTimeout(() => { copyBtn.textContent = "复制数据"; copyBtn.classList.remove("ok"); }, 1600);
+    };
+  }
 }
 
 /* ── 搜索与排序 ── */
@@ -729,14 +817,24 @@ qEl.addEventListener("input", () => {
 });
 clrEl.onclick = () => { qEl.value = ""; clrEl.hidden = true; renderList(true); qEl.focus(); };
 
-document.querySelectorAll("#sorts button").forEach(b => {
+document.querySelectorAll("#sorts button[data-sort]").forEach(b => {
   b.onclick = () => {
-    document.querySelectorAll("#sorts button").forEach(x => x.setAttribute("aria-pressed","false"));
+    document.querySelectorAll("#sorts button[data-sort]").forEach(x => x.setAttribute("aria-pressed","false"));
     b.setAttribute("aria-pressed","true");
     sortBy = b.dataset.sort;
     renderList(true);
   };
 });
+
+/* 只看可用区域 */
+const usableBtn = document.getElementById("usable");
+if (usableBtn){
+  usableBtn.onclick = () => {
+    onlyUsable = !onlyUsable;
+    usableBtn.setAttribute("aria-pressed", onlyUsable ? "true" : "false");
+    renderList(true);
+  };
+}
 
 /* 键盘：上下切换 */
 addEventListener("keydown", e => {
@@ -751,12 +849,24 @@ addEventListener("keydown", e => {
   e.preventDefault();
 });
 
-/* 初始化：默认选中第一个可用的 */
-const first = PROVINCES.find(p => p.st === "verified") || PROVINCES[0];
+/* 初始化：优先读 URL 里的省名，其次第一个已核区域 */
+let hashP = "";
+try { hashP = decodeURIComponent((location.hash || "").replace(/^#/, "")); } catch (e) {}
+const first = PROVINCES.find(p => p.p === hashP)
+           || PROVINCES.find(p => p.st === "verified")
+           || PROVINCES[0];
 current = first.p;
 renderList();
 renderDetail(first);
 requestAnimationFrame(animateBars);
+
+/* 浏览器前进/后退时同步选中的省 */
+addEventListener("hashchange", () => {
+  let h = "";
+  try { h = decodeURIComponent((location.hash || "").replace(/^#/, "")); } catch (e) {}
+  const p = PROVINCES.find(x => x.p === h);
+  if (p && p.p !== current) selectProvince(p, true);
+});
 
 /* 入场 */
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
