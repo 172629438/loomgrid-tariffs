@@ -279,10 +279,82 @@ footer{padding:clamp(56px,7vw,88px) 0 clamp(40px,5vw,64px);border-top:1px solid 
 .js .rise{opacity:0;transform:translateY(10px)}
 .js .rise.in{opacity:1;transform:none;transition:opacity var(--t-4) var(--ease-out),transform var(--t-4) var(--ease-out)}
 @media(prefers-reduced-motion:reduce){.js .rise{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ══════════════ 过渡与交互 ══════════════
+   原则：只动“状态变化的地方”，不做装饰性运动。
+   时长四档；缓动默认 ease-out，一次性大块用弹簧。
+   尊重 prefers-reduced-motion。                                        */
+
+/* 滚动进度：顶部 1px 金线，实时跟随 */
+#prog{
+  position:fixed;top:0;left:0;height:1px;width:100%;z-index:95;
+  background:var(--gold);transform:scaleX(0);transform-origin:0 50%;
+  pointer-events:none;opacity:.85;
+}
+
+/* 详情面板：整体切换的淡入淡出 */
+#detail{transition:opacity var(--t-2) var(--ease-out),transform var(--t-2) var(--ease-out)}
+
+/* View Transitions：浏览器支持时用原生过渡，不支持则走上面的 CSS */
+#detail{view-transition-name:detail}
+::view-transition-old(detail){animation:vt-out 180ms cubic-bezier(.65,0,.35,1) both}
+::view-transition-new(detail){animation:vt-in 380ms cubic-bezier(.22,1,.36,1) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-6px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(10px)}}
+
+/* 列表项：金色左边界从中间向上下展开 */
+.item{position:relative}
+.item::before{
+  content:"";position:absolute;left:0;width:2px;background:var(--gold);
+  top:50%;bottom:50%;opacity:0;
+  transition:top var(--t-3) var(--ease-out),bottom var(--t-3) var(--ease-out),opacity var(--t-1) var(--ease-out);
+}
+.item[aria-selected="true"]::before{top:0;bottom:0;opacity:1}
+/* 选中背景从左向右铺开 */
+.item::after{
+  content:"";position:absolute;inset:0;background:rgba(143,221,255,.055);
+  transform:scaleX(0);transform-origin:0 50%;z-index:-1;
+  transition:transform var(--t-3) var(--ease-out);
+}
+.item[aria-selected="true"]::after{transform:scaleX(1)}
+.item[aria-selected="true"]{background:transparent}
+/* 按压反馈：不缩放，只用一道极淡的内阴影 */
+.item:active{background:rgba(237,236,232,.05)}
+
+/* 排序按钮：下划线从左端展开 */
+.sorts button::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--gold);transition:width var(--t-2) var(--ease-out);
+}
+.sorts button[aria-pressed="true"]::after{width:calc(100% - 9px)}
+
+/* 搜索框聚焦时的左侧刻度 */
+.searchbox::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--gold);
+  opacity:0;transform:scaleY(.4);transition:opacity var(--t-2) var(--ease-out),transform var(--t-2) var(--ease-out);
+}
+.searchbox:focus-within::before{opacity:1;transform:scaleY(1)}
+
+/* 时段条：宽度由 JS 逐段展开，这里只给 hover 反馈 */
+.bar div{will-change:width}
+
+/* 价格数字与微标：切换时轻微上冲 */
+.pr .v,.d-name,.badge{transition:opacity var(--t-2) var(--ease-out),transform var(--t-2) var(--ease-out)}
+.pane-fresh .pr .v{animation:numIn 420ms cubic-bezier(.22,1,.36,1) both}
+.pane-fresh .pr:nth-child(2) .v{animation-delay:40ms}
+.pane-fresh .pr:nth-child(3) .v{animation-delay:80ms}
+.pane-fresh .pr:nth-child(4) .v{animation-delay:120ms}
+@keyframes numIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+/* 段落与卡片的入场：更慢、更短距离 */
+.js .rise{transition-duration:var(--t-4)}
+
+/* 页内锚点滚动的落点留白已由 scroll-margin-top 处理 */
 </style>
 </head>
 <body>
 
+<div id="prog"></div>
 <nav id="nav">
   <a class="brand" href="#hero"><i></i><b>loomgrid</b><span>tariffs</span></a>
   <div class="navlist">
@@ -453,9 +525,16 @@ const STATUS_ORDER = { verified:0, partial:1, template_suspected:2, unverified:3
 
 let sortBy = "name";
 let current = null;
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = ms => new Promise(r => setTimeout(r, ms));
 
 const nav = document.getElementById("nav");
-addEventListener("scroll", () => nav.classList.toggle("on", scrollY > 20), { passive: true });
+addEventListener("scroll", () => {
+  nav.classList.toggle("on", scrollY > 20);
+  const h = document.documentElement.scrollHeight - innerHeight;
+  const prog = document.getElementById("prog");
+  if (prog) prog.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")";
+}, { passive: true });
 
 /* 价差：两侧都有价才算 */
 function spread(p){
@@ -466,7 +545,7 @@ const fmt = n => String(Math.floor(n)).padStart(2,"0") + (n % 1 ? ":30" : ":00")
 
 /* ── 列表 ── */
 const listEl = document.getElementById("list");
-function renderList(){
+function renderList(animate){
   const kw = document.getElementById("q").value.trim().toLowerCase();
   let rows = PROVINCES.filter(p => !kw ||
     p.p.toLowerCase().includes(kw) ||
@@ -497,13 +576,73 @@ function renderList(){
     b.innerHTML = '<span class="dot"></span>' +
       '<span class="nm">' + p.p + (sub ? '<small>' + sub + '</small>' : '') + '</span>' +
       '<span class="sp' + (sp < 0 ? " na" : "") + '">' + spTxt + '</span>';
-    b.onclick = () => { current = p.p; renderList(); renderDetail(p); };
+    b.onclick = () => selectProvince(p);
     listEl.appendChild(b);
   });
+  if (animate) staggerList();
 }
 
 /* ── 详情 ── */
 const detailEl = document.getElementById("detail");
+/* 时段条：从 0 宽度逐段展开，错开 26ms 营造从左往右的节奏 */
+function animateBars(){
+  if (REDUCE) return;
+  const bars = document.querySelectorAll(".bar div[data-w]");
+  bars.forEach((el, i) => {
+    el.style.width = "0";
+    el.style.transition = "width 560ms cubic-bezier(.22,1,.36,1) " + Math.min(i * 26, 320) + "ms";
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => { el.style.width = el.dataset.w; });
+    });
+  });
+}
+
+/* 切换省份：优先用 View Transitions，不支持或报错则 CSS 淡出淡入 */
+async function selectProvince(p){
+  if (current === p.p) return;
+  const d = document.getElementById("detail");
+  const keepScroll = listEl.scrollTop;
+
+  if (!REDUCE && document.startViewTransition){
+    try {
+      const vt = document.startViewTransition(() => {
+        current = p.p; renderList(); listEl.scrollTop = keepScroll; renderDetail(p);
+      });
+      vt.finished.then(animateBars).catch(animateBars);
+      return;
+    } catch (e) {
+      /* 退到 CSS 路径 */
+    }
+  }
+
+  if (!REDUCE && d){
+    d.style.opacity = "0";
+    d.style.transform = "translateY(6px)";
+    await wait(140);
+    current = p.p; renderList(); listEl.scrollTop = keepScroll; renderDetail(p);
+    requestAnimationFrame(() => {
+      d.style.opacity = "1";
+      d.style.transform = "none";
+    });
+    animateBars();
+    return;
+  }
+
+  current = p.p; renderList(); listEl.scrollTop = keepScroll; renderDetail(p);
+}
+
+/* 列表项错开入场 */
+function staggerList(){
+  if (REDUCE) return;
+  const items = listEl.querySelectorAll(".item");
+  items.forEach((el, i) => {
+    el.animate(
+      [{opacity:0, transform:"translateY(4px)"}, {opacity:1, transform:"none"}],
+      {duration:200, delay:Math.min(i * 14, 160), easing:"cubic-bezier(.22,1,.36,1)", fill:"backwards"}
+    );
+  });
+}
+
 function renderDetail(p){
   const sp = spread(p);
   const badgeCls = p.st === "verified" ? "v" : p.st === "template_suspected" ? "t" : p.st === "partial" ? "" : "w";
@@ -527,9 +666,12 @@ function renderDetail(p){
   let seasons = "";
   if (p.seas && p.seas.length){
     seasons = '<div class="seasons">' + p.seas.map(s => {
-      const bar = s.s.map(([a,b,t]) =>
-        '<div style="width:' + ((b-a)/24*100) + '%;background:' + (FILL[t]||FILL.flat) +
-        '" title="' + NAME[t] + ' ' + fmt(a) + '–' + fmt(b) + '"></div>').join("");
+      const bar = s.s.map(([a,b,t]) => {
+        const w = (b-a)/24*100;
+        return '<div data-w="' + w + '%" style="width:' + (REDUCE ? w + '%' : '0') +
+          ';background:' + (FILL[t]||FILL.flat) +
+          '" title="' + NAME[t] + ' ' + fmt(a) + '–' + fmt(b) + '"></div>';
+      }).join("");
       return '<div class="season"><div class="season-head"><h3>' + s.n + '</h3>' +
         '<span class="m">' + p.cite.split(";")[0] + '</span></div>' +
         '<div class="bar">' + bar + '</div>' +
@@ -571,6 +713,11 @@ function renderDetail(p){
     seasons +
     '<div class="src"><span class="k">政策依据</span>' +
       (cite ? citeHTML : '<span style="color:var(--ash3)">未收录</span>') + '<br>' + url + '</div>';
+
+  /* 价格数字与名称的微入場（只触发一次，重启 class） */
+  detailEl.classList.remove("pane-fresh");
+  void detailEl.offsetWidth;
+  detailEl.classList.add("pane-fresh");
 }
 
 /* ── 搜索与排序 ── */
@@ -578,16 +725,16 @@ const qEl = document.getElementById("q");
 const clrEl = document.getElementById("clr");
 qEl.addEventListener("input", () => {
   clrEl.hidden = !qEl.value;
-  renderList();
+  renderList(true);
 });
-clrEl.onclick = () => { qEl.value = ""; clrEl.hidden = true; renderList(); qEl.focus(); };
+clrEl.onclick = () => { qEl.value = ""; clrEl.hidden = true; renderList(true); qEl.focus(); };
 
 document.querySelectorAll("#sorts button").forEach(b => {
   b.onclick = () => {
     document.querySelectorAll("#sorts button").forEach(x => x.setAttribute("aria-pressed","false"));
     b.setAttribute("aria-pressed","true");
     sortBy = b.dataset.sort;
-    renderList();
+    renderList(true);
   };
 });
 
@@ -605,11 +752,11 @@ addEventListener("keydown", e => {
 });
 
 /* 初始化：默认选中第一个可用的 */
-renderList();
 const first = PROVINCES.find(p => p.st === "verified") || PROVINCES[0];
 current = first.p;
 renderList();
 renderDetail(first);
+requestAnimationFrame(animateBars);
 
 /* 入场 */
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
