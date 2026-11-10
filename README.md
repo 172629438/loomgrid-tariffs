@@ -1,10 +1,11 @@
 # 中国省级分时电价数据集 · China Provincial TOU Tariff Dataset
 
-**32 个省级行政区 · 峰平谷电价 · 分季节时段表 · 需求响应补贴**
-**32 provincial-level regions · peak/flat/valley prices · seasonal period tables · demand-response subsidies**
+**33 个电网价区 · 覆盖 31 个省级行政区 · 峰平谷电价 · 分季节时段表 · 需求响应补贴**
+**33 grid pricing zones across 31 provincial-level regions · peak/flat/valley prices · seasonal period tables · demand-response subsidies**
 
-[![Regions](https://img.shields.io/badge/regions-32-2f6b4f?style=flat-square)](#覆盖范围)
-[![Periods](https://img.shields.io/badge/period_records-336-2f6b4f?style=flat-square)](#文件结构)
+[![Zones](https://img.shields.io/badge/pricing_zones-33-2f6b4f?style=flat-square)](#覆盖范围)
+[![Regions](https://img.shields.io/badge/provincial_regions-31-2f6b4f?style=flat-square)](#覆盖范围)
+[![Periods](https://img.shields.io/badge/period_records-577-2f6b4f?style=flat-square)](#文件结构)
 [![validate](https://github.com/172629438/loomgrid-tariffs/actions/workflows/validate.yml/badge.svg)](https://github.com/172629438/loomgrid-tariffs/actions/workflows/validate.yml)
 [![Price version](https://img.shields.io/badge/price_version-2026--06-9a7b2e?style=flat-square)](#数据版本与时效)
 [![License](https://img.shields.io/badge/license-MIT-2f6b4f?style=flat-square)](LICENSE)
@@ -20,10 +21,10 @@
 
 China's industrial & commercial (C&I) electricity tariffs are **time-of-use based**: each day is split into peak / flat / valley segments, and every province defines its own segment boundaries, its own seasonal groupings, and its own price levels. There is no single national file — practitioners rebuild this table from provincial NDRC notices, by hand, for every project.
 
-This dataset collects the result of that work for **32 provincial-level regions**, as of **price version 2026-06**:
+This dataset collects the result of that work for **33 grid pricing zones across 31 provincial-level regions**, as of **price version 2026-06**:
 
 - `data/province_tariff_summary.csv` — one row per region: peak/flat/valley price, demand charge, charging-cycle mode, policy citation
-- `data/province_tariff_periods.csv` — long format: region × season × time segment (309 records)
+- `data/province_tariff_periods.csv` — long format: region × season × time segment (577 records)
 - `data/province_tariff.json` — full nested structure, drop-in for application code
 - `data/dr_subsidy.csv` — demand-response subsidy standards (5 regions with published rates)
 
@@ -35,17 +36,21 @@ Built and maintained by the author of [LoomGrid](https://github.com/172629438/lo
 
 ## 覆盖范围
 
-32 个省级行政区，按电网区域划分：
+**33 个电网价区**，覆盖 31 个省级行政区。河北拆为冀北与河北南网、内蒙古拆为蒙东与蒙西——两边电价与时段都不相同，合成一省就失真了。
 
-| 区域 | 省级行政区 |
+按电网区域划分：
+
+| 区域 | 电网价区 |
 |---|---|
 | 华东 | 上海 · 江苏 · 浙江 · 安徽 · 福建 · 江西 · 山东 |
 | 华南 | 广东 · 广西 · 海南 |
 | 华中 | 河南 · 湖北 · 湖南 |
-| 华北 | 北京 · 天津 · 河北 · 山西 · 蒙东 · 蒙西 |
+| 华北 | 北京 · 天津 · 冀北 · 河北南网 · 山西 · 蒙东 · 蒙西 |
 | 西北 | 陕西 · 甘肃 · 青海 · 宁夏 · 新疆 |
 | 西南 | 四川 · 重庆 · 云南 · 贵州 · 西藏 |
 | 东北 | 辽宁 · 吉林 · 黑龙江 |
+
+> 早先版本把这表写成 32 项，是因为河北只列了“河北”一条；实际上冀北与河北南网分属不同价区，是两条记录。
 
 ---
 
@@ -87,7 +92,7 @@ for _, r in zj.iterrows():
 ```
 data/
 ├── province_tariff_summary.csv    33 行 · 一省一行 · 价格/需量/机制/价区/出处
-├── province_tariff_periods.csv   336 行 · 省份×季节×时段 长表（含尖峰/深谷）
+├── province_tariff_periods.csv   577 行 · 省份×季节×时段 长表（含尖峰/深谷）
 ├── province_tariff.json           完整嵌套结构（schema 2.0）
 ├── dr_subsidy.csv                  5 行 · 需求响应补贴
 └── meta.json                      版本 / 省份清单 / 待补清单 needs_review
@@ -321,7 +326,7 @@ python scripts/check_proxy_price.py --demo
   title  = {China Provincial TOU Tariff Dataset},
   author = {LoomGrid},
   year   = {2026},
-  note   = {32 provincial-level regions, price version 2026-06},
+  note   = {33 grid pricing zones across 31 provincial-level regions, price version 2026-06},
   url    = {https://github.com/172629438/loomgrid-tariffs}
 }
 ```

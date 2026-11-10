@@ -3,7 +3,8 @@ message: "If you use this dataset in research or commercial work, please cite it
 type: dataset
 title: "China Provincial TOU Tariff Dataset"
 abstract: >-
-  Time-of-use electricity tariffs for 32 provincial-level regions in China,
+  Time-of-use electricity tariffs for 33 grid pricing zones across 31 provincial-level
+  regions in China,
   including peak/flat/valley price levels, seasonal period tables, demand
   charges, recommended battery charging-cycle modes, demand-response subsidy
   standards, and the policy document citation for each region.
